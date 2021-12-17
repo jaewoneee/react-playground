@@ -1,0 +1,25 @@
+// common
+@mixin mode($mode){
+    background-color:$mode;
+}
+
+
+
+// header
+.header-wrap{
+    overflow:hidden;
+    @include mode(#fff);
+    .header-inner{
+        #logo{
+a{
+            width: 100px;
+            display:block;
+            background-color:orange;
+            img{
+                width:100%;
+            }
+        }
+    }
+    }
+    
+}
