@@ -11,13 +11,13 @@
     @include mode(#fff);
     .header-inner{
         #logo{
-a{
-            width: 100px;
+            a{
+            width: 10%;
             display:block;
             background-color:orange;
-            img{
-                width:100%;
-            }
+                img{
+                    width:100%;
+                }
         }
     }
     }

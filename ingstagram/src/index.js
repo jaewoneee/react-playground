@@ -4,11 +4,29 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { combineReducers, createStore } from 'redux';
+
+let isDarkMode = false;
+
+function reducer(state = isDarkMode, action) {
+  if (action.type === 'true') {
+    console.log('hello');
+     return !state;
+  } else {
+    console.log('world');
+    return !state;
+ }
+   
+}
+let store = createStore(combineReducers({reducer}));
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Provider store = {store}>
+        <App />
+      </Provider> 
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

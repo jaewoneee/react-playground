@@ -1,6 +1,6 @@
-import Profile from '../components/main/Profile';
-import Image from '../components/main/Image'
-import Text from '../components/main/Text';
+import Profile from '../components/item/Profile';
+import Image from '../components/item/Image'
+import Text from '../components/item/Text';
 
 function Main() {
     return (
