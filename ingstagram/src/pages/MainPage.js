@@ -7,6 +7,8 @@ function Main() {
         <div className="main-wrap">
             <ul>
                 <Item></Item>
+                <Item></Item>
+                <Item></Item>
             </ul>
         </div>
     )

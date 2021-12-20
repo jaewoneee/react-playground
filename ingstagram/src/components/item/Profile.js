@@ -1,9 +1,9 @@
 function Profile() {
     return (
         <div className="profile-box">
-            프로필 섹션:
             <div>
-                <img alt="프로필 이미지"></img>
+                <div className="profile-img"></div>
+                <span className="profile-name">learningreact</span>
             </div>
         </div>
     )

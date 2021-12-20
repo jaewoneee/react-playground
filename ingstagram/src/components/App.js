@@ -4,7 +4,6 @@ import classnames from 'classnames';
 // style
 import '../styles/reset.scss';
 import '../styles/style.scss';
-
 // components
 import Header from '../components/common/Header';
 import Navigation from '../components/common/Navigation'
@@ -12,7 +11,7 @@ import Main from '../pages/MainPage';
 import Upload from '../pages/UploadPage'
 
 function App() {
-    let state = useSelector((state) => state.reducer );
+    let state = useSelector((state) => state.isDarkMode );
 
   return (
     <div className={classnames('App', { 'dark' : state })}>

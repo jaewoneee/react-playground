@@ -7,19 +7,17 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 
-let isDarkMode = false;
+let mode = false;
 
-function reducer(state = isDarkMode, action) {
+function isDarkMode(state = mode, action) {
   if (action.type === 'true') {
-    console.log('hello');
-     return !state;
+    state = true;
   } else {
-    console.log('world');
-    return !state;
- }
-   
+    state = false;
+  }
+  return state;
 }
-let store = createStore(combineReducers({reducer}));
+let store = createStore(combineReducers({isDarkMode}));
 
 ReactDOM.render(
   <React.StrictMode>

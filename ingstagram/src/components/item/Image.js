@@ -1,7 +1,9 @@
+import test from '../../assets/images/bg.jpg';
+
 function Image() {
     return (
         <div className="image-box">
-            이미지
+            <img src={test}></img>
         </div>
     )
 }

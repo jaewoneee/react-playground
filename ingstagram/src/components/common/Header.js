@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import defaultLogo from '../../assets/images/logo.png';
-// import whiteLogo from '../../assets/images/logo_wht';
+import defaultLogo from '../../assets/images/logos.png';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Header() {
@@ -18,9 +17,9 @@ function Header() {
                         </Link>
                     </h1>
                     {
-                        state.reducer === false
-                        ? <button onClick={() => { dispatch({ type: 'true' });}}>Dark</button>
-                        : <button onClick={() => { dispatch({ type: 'false' });}}>Light</button>
+                        state.isDarkMode === false
+                        ? <button onClick={() => { dispatch({ type: 'true' });}} title='dark'></button>
+                        : <button onClick={() => { dispatch({ type: 'false' });}} title='light'></button>
                     }
                     
                 </div>
