@@ -2,12 +2,20 @@
 import createError from 'http-errors'
 import express from 'express';
 import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgab'
 import cors from 'cors'
+import cookieParser from 'cookie-parser';
+import detectPort from 'detect-port';
+import logger from 'morgan'
 
 import indexRouter from './routes/index';
 import usersRouter from './routes/index';
+
+// server setup
+let port;
+async function configServer() {
+  port = 3300 || (await detectPort(3300));
+}
+configServer();
 
 const app = express();
 
@@ -40,5 +48,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// start
+app.listen(port, () =>
+  console.log(`SERVER IS RUNNING ON ${port}`)
+);
+
 
 export default app;
