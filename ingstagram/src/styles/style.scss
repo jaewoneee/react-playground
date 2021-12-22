@@ -7,16 +7,25 @@ $light : #fff;
     transition: 0.4s linear;
 }
 
+%dissabled {
+    color: rgb(143, 143, 143);
+    background-color: rgb(230, 230, 230);
+    border: 1px solid rgb(230, 230, 230);
+    cursor: default;
+}
+
 .image-box {
     width: 100%;
     overflow: hidden;
     position: relative;
     margin-bottom: 10px;
+
     img {
         position: absolute;
-        width: 100%;
         top: 50%;
         left: 50%;
+        object-fit: contain;
+        max-width: 500px;
         transform: translate(-50%, -50%);
     }
 
@@ -27,16 +36,19 @@ $light : #fff;
     }
 }
 
+
+
 #root {
     width: 100%;
     height: 100%;
-    min-height:100vh;
+    min-height: 100vh;
     margin: 0 auto;
 }
 
 .App {
     width: 100%;
     height: 100%;
+    min-height: 100vh;
     @include mode($light);
 }
 
@@ -54,14 +66,16 @@ div[class*=-wrap]:not(.header-wrap, .nav-wrap) {
     @include mode($light);
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 15;
     overflow: hidden;
+
     .header-inner {
         display: flex;
         padding: 15px;
         max-width: 500px;
         margin: 0 auto;
         justify-content: space-between;
+
         #logo {
             width: 130px;
             height: calc(69.67px / 2);
@@ -101,12 +115,14 @@ div[class*=-wrap]:not(.header-wrap, .nav-wrap) {
     bottom: 0;
     padding: 20px 0;
     @include mode($light);
+
     #nav {
         ul {
             display: flex;
             justify-content: space-between;
             max-width: 500px;
             margin: 0 auto;
+
             li {
                 width: 33%;
                 text-align: center;
@@ -167,6 +183,7 @@ div[class*=-wrap]:not(.header-wrap, .nav-wrap) {
 
             .text-box {
                 display: flex;
+
                 p {
                     span {
                         font-weight: bold;
@@ -193,7 +210,7 @@ div[class*=-wrap]:not(.header-wrap, .nav-wrap) {
 
                 button {
                     color: #666;
-                    padding: 0 3px
+                    padding: 0 3px;
                 }
             }
         }
@@ -201,10 +218,9 @@ div[class*=-wrap]:not(.header-wrap, .nav-wrap) {
 }
 
 // upload
-.upload-wrap{
-    height: calc(100vh - 65px);
-    .image-box{
-        .upload-img-btn{
+.upload-wrap {
+    .image-box {
+        .upload-img-btn {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -212,31 +228,40 @@ div[class*=-wrap]:not(.header-wrap, .nav-wrap) {
             height: 100%;
             transform: translate(-50%, -50%);
             z-index: 10;
-            label{
+
+            label {
                 display: block;
                 width: 100%;
                 height: 100%;
             }
         }
     }
-    .upload-text-box{
+
+    .upload-text-box {
         margin-bottom: 10px;
-        textarea{
+
+        textarea {
             width: 100%;
-            height: 100px;
+            height: 70px;
             border: 0;
             resize: none;
             background-color: transparent;
-            font-family: "NotoSansKR","Roboto", sans-serif;
+            font-family: "NotoSansKR", "Roboto", sans-serif;
         }
     }
-    button{
+
+    button {
         width: 100%;
         padding: 15px;
         border-radius: 5px;
         font-size: 0.9rem;
         font-weight: bold;
-        border:1px solid rgb(224, 224, 224)
+        border: 1px solid rgb(224, 224, 224);
+        transition: 0.2s linear;
+
+        &:disabled {
+            @extend %dissabled;
+        }
     }
 }
 
@@ -284,13 +309,19 @@ div[class*=-wrap]:not(.header-wrap, .nav-wrap) {
             color: #fff;
         }
     }
-    .upload-wrap{
-        textarea{
+
+    .upload-wrap {
+        textarea {
             color: #fff;
         }
-        button{
+
+        button {
             border: 1px solid #fff;
             color: #fff;
+
+            &:disabled {
+                @extend %dissabled;
+            }
         }
     }
 }
