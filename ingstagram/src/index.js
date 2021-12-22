@@ -7,16 +7,30 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 
-let mode = false;
 
-function isDarkMode(state = mode, action) {
-  if (action.type === 'true') {
-    state = true;
-  } else {
-    state = false;
+
+function isDarkMode(state = null, action) {
+  state = getCurrentMode(state);
+  if (action.type === 'dark') {
+     localStorage.setItem('mode', 'dark');
+    return state = true;
+  } else if(action.type === 'light'){
+    localStorage.setItem('mode', 'light');
+    return state = false;
   }
   return state;
 }
+
+// 로컬스토리지에 저장된 mode 상태 체크
+function getCurrentMode(state = null) {
+  let current = localStorage.getItem('mode');
+    if (current === 'dark') {
+      return state = true;
+    } else {
+      return state = false;
+    }
+}
+
 let store = createStore(combineReducers({isDarkMode}));
 
 ReactDOM.render(
