@@ -39,7 +39,7 @@ router.get('/', async (req, res) => {
     try {
         const items =  await userModel.find({}).lean().exec();
         console.log(items);
-        res.status(201).json({ ...items });
+        res.status(201).send(items);
     } catch (err) {
         res.status(400).json({ "msg": err });
     }
