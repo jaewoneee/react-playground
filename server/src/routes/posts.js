@@ -28,7 +28,7 @@ router.post('/',  (req, res) => {
                 "msg": "Upload Fail."
             });
         } else {
-            const item = userModel.create({ image: `uploads/${file}`, text: text });
+            const item = userModel.create({ image: `images/${file}`, text: text });
             return res.status(201);
         }
     });
