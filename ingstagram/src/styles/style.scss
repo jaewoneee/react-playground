@@ -184,8 +184,8 @@ div[class*=-wrap]:not(.header-wrap, .nav-wrap) {
             .text-box {
                 display: flex;
 
-                p {
-                    span {
+               div{
+                    span.nickname {
                         font-weight: bold;
                         letter-spacing: 0;
                         display: inline-block;

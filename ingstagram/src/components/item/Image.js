@@ -1,9 +1,8 @@
-import test from '../../assets/images/bg.jpg';
 
-function Image() {
+function Image(props) {
     return (
         <div className="image-box">
-            <img src={test}></img>
+            <img src={`http://localhost:8000/${props.propsdata.image}`} alt='이미지'></img>
         </div>
     )
 }

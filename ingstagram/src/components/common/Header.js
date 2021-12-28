@@ -4,7 +4,7 @@ import defaultLogo from '../../assets/images/logos.png';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Header() {
-    let state = useSelector((state) => state );
+    let state = useSelector((state) => state.isDarkMode );
     let dispatch = useDispatch();
 
     return (
@@ -17,9 +17,9 @@ function Header() {
                         </Link>
                     </h1>
                     {
-                        state.isDarkMode === false
-                        ? <button onClick={() => { dispatch({ type: 'true' });}} title='dark'></button>
-                        : <button onClick={() => { dispatch({ type: 'false' });}} title='light'></button>
+                        state === false
+                        ? <button onClick={() => { dispatch({ type: 'dark' });}} title='dark'></button>
+                        : <button onClick={() => { dispatch({ type: 'light' });}} title='light'></button>
                     }
                     
                 </div>
