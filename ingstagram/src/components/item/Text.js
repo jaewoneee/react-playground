@@ -2,13 +2,21 @@ function Text(props) {
     return (
         <div className="text-box">
             <div>
-                <span class="nickname">learningreact</span>
-                <span>{props.propsdata.text}</span>
+                <span className="nickname">learningreact</span>
+               {props.propsdata.text}
             </div>
-            <button className="more-btn" onClick={(e)=>{moreText(e)}}>more</button>
+            {
+                props.propsdata.text.length > 65
+                ?<button className="more-btn" onClick={(e)=>{moreText(e)}}>more</button>
+                : null
+            }
+            
         </div>
     )
 }
+
+
+
 function moreText(e) {
     let target = e.target;
     target.previousSibling.classList.add('show');

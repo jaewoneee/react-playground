@@ -156,9 +156,12 @@ div[class*=-wrap]:not(.header-wrap, .nav-wrap) {
 // main
 .main-wrap {
     ul {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
         li {
             margin-bottom: 30px;
-
+            width:100%;
             .profile-box {
                 padding: 8px 0;
 

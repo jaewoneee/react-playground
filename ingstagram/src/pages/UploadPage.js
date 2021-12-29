@@ -1,8 +1,10 @@
 import defaultThumb from '../assets/images/upload.png';
 import axios from 'axios';
 import {  useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Upload() {
+    let history = useHistory();
     let [file, setFile] = useState('');
     let [text, setText] = useState('');
 
@@ -17,9 +19,12 @@ function Upload() {
             },
         }).then((res) => {
             console.log(res);
+
         }).catch((err) => {
             console.log(err);
         })
+        alert('Upload Success!');
+        history.push('/');
     }
 
     return (
@@ -64,8 +69,8 @@ function setThumbnail(event) {
 
 // 업로드 한 파일의 유효성 체크
 function checkFileExtension(file) {
-    const regex = new RegExp("(.*?)\.(jpg|jpeg|png|bmp|gif)$"); // 이미지 파일만 허용
-    const maxSize = 5242880; //5MB 이하
+    const regex = new RegExp("(.*?)\.(jpg|jpeg|png|bmp|gif)$"); // 확장자 제한: 이미지 파일만 허용
+    const maxSize = 5242880; //용량제한: 5MB 이하
     
     if (!regex.test(file.name) || file.size >= maxSize) {
         return false;
