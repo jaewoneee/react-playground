@@ -11,7 +11,7 @@ npm start
 
 ### Backend
 ```
-cd src
+cd server
 npm install
 npm run build
 npm start 
