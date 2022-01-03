@@ -1,25 +1,28 @@
-import createError from 'http-errors'
-import express from 'express';
-import path from 'path';
-import cors from 'cors'
-import cookieParser from 'cookie-parser';
-import detectPort from 'detect-port';
-import logger from 'morgan';
-import mongoose from 'mongoose';
+import createError from "http-errors";
+import express from "express";
+import path from "path";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import detectPort from "detect-port";
+import logger from "morgan";
+import mongoose from "mongoose";
 
-import posts from './routes/posts';
-import docs from './utils/swagger';
+import posts from "./routes/posts";
 
 // mongo db
 mongoose.connect(
-  'mongodb+srv://admin:1234@ingstagram.v9xmj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+  "mongodb+srv://admin:1234@ingstagram.v9xmj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  {
     useNewUrlParser: true,
   }
 );
 const db = mongoose.connection;
-db.once('open', () => { console.log('open!') });
-db.on('error', () => { console.log('error!') });
-
+db.once("open", () => {
+  console.log("open!");
+});
+db.on("error", () => {
+  console.log("error!");
+});
 
 // server setup
 let port;
@@ -31,19 +34,21 @@ configServer();
 const app = express();
 
 // view engine setup
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({
-  extended: false
-}));
+app.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
 app.use(cookieParser());
 app.use(cors());
 
-app.use('/posts', posts);
-app.use('/images', express.static(path.join(__dirname, 'uploads')));
+app.use("/posts", posts);
+app.use("/images", express.static(path.join(__dirname, "uploads")));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -54,17 +59,14 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render("error");
 });
 
 // start
-app.listen(port, () =>
-  console.log(`SERVER IS RUNNING ON ${port}`)
-);
-
+app.listen(port, () => console.log(`SERVER IS RUNNING ON ${port}`));
 
 export default app;
